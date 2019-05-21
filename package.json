@@ -1,7 +1,6 @@
 {
   "name": "pairproject",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -22,5 +21,6 @@
     "express": "^4.17.0",
     "pg": "^7.11.0",
     "sequelize": "^5.8.6"
-  }
+  },
+  "description": ""
 }
