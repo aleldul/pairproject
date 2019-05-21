@@ -1,0 +1,26 @@
+{
+  "name": "pairproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aleldul/pairproject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aleldul/pairproject/issues"
+  },
+  "homepage": "https://github.com/aleldul/pairproject#readme",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.17.0",
+    "pg": "^7.11.0",
+    "sequelize": "^5.8.6"
+  }
+}
