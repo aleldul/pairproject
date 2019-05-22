@@ -2,8 +2,17 @@ const express = require('express')
 const app = express()
 const port = 3000
 const {User} = require('./models')
+const gameRoute = require('./routes/routeGame')
+
+app.use(express.static(__dirname + '/views'));
 
 app.use(express.urlencoded({extended: false}));
+
+app.get('/map', (req,res) => {
+    res.render('./game/3Dmap.ejs')
+})
+
+app.use('/game', gameRoute)
 
 app.get('/', (req, res) => {
     res.render('home.ejs')
