@@ -103,5 +103,8 @@ route.post('/level/:id', (req, res) => {
         })
 })
 
+route.get('/map', (req, res)=> {
+    res.render('map/map.ejs')
+})
 
 module.exports = route

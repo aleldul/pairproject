@@ -17,7 +17,7 @@ var score = 0,
 function gameEnd() {
 
   $('#game').removeClass('in-game').html(`<div style="text-align: center"><p class="scored">YOU SCORED <strong style="font-size: 53px;display: block;">`+score+`</strong></p><button id="playgame">Play Again</button> <button id="nextlevel">Next Level</button><div class="social-share">Share your score: <ul><li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//bluegrasscoms.com/halloween" target="_blank"><img src="https://www.dropbox.com/s/vsfuchbzym4cl7i/facebook.svg?raw=1"/></a></li><li><a href="https://twitter.com/home?status=I%20scored%20`+score+`%20on%20the%20Wanted%20-%20Dead%20or%20Alive%20Halloween%20Game,%20try%20and%20beat%20my%20score%20here%20https%3A//bit.ly/2ECobCh%20%23WantedDeadOrAlive%20%23Halloween%20%23Bluegrasscoms" target="_blank"><img src="https://www.dropbox.com/s/ulp7ittyz8wbgy5/twitter.svg?raw=1"/></a></li></ul></div><div><label for="score"></label><form id="formScore" method='post' action='/game/level/${dataGame.id}'>
-  <input type="text" name="score" value=${score}></form></div></div>`);
+  <input type="hidden" name="score" value=${score}></form></div></div>`);
   $('#playgame').on('click', function() {
     score = 0;
     startgame();
