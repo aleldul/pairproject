@@ -37,7 +37,7 @@ module.exports = {
         createdAt : new Date(),
         updatedAt : new Date()
       },{
-        level : 'worldCup',
+        level : 'world Cup',
         time : 10,
         BoardId: 5,
         createdAt : new Date(),
@@ -67,7 +67,7 @@ module.exports = {
         createdAt : new Date(),
         updatedAt : new Date()
       },{
-        level : 'harryPotter',
+        level : 'harry Potter',
         time : 10,
         BoardId: 10,
         createdAt : new Date(),
