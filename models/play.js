@@ -8,6 +8,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Play.associate = function(models) {
     // associations can be defined here
+    Play.belongsTo(models.Game)
+    Play.belongsTo(models.User)
   };
   return Play;
 };

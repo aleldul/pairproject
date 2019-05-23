@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Board.associate = function(models) {
     // associations can be defined here
+    Board.hasOne(models.Game)
   };
   return Board;
 };

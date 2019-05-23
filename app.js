@@ -3,10 +3,18 @@ const app = express()
 const port = 3000
 const {User} = require('./models')
 const gameRoute = require('./routes/routeGame')
+const session = require('express-session')
 
 app.use(express.static(__dirname + '/views'));
 
 app.use(express.urlencoded({extended: false}));
+
+app.use(session({
+    secret: 'reactionGame',
+    cookie: {}
+}))
+
+// app.use(session(sess))
 
 app.get('/map', (req,res) => {
     res.render('./game/3Dmap.ejs')
@@ -62,8 +70,8 @@ app.post('/signup', (req, res) => {
             email: req.body.email,
             password: req.body.password
         }
-        console.log(temp)
         User.create(temp)
+        console.log(temp)
         .then(success => {
             res.send(success)
         })
