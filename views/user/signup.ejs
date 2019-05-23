@@ -122,7 +122,14 @@
             <input type="email" name="email" class="form-control" placeholder="Email address" required autofocus="">
             <input type="password" name="password" class="form-control" placeholder="Password" required autofocus="">
             <input type="password" name="repeatpass" class="form-control" placeholder="Repeat Password" required autofocus="">
-            <button class="btn btn-primary btn-block" type="submit" style="margin-top: 10px;" ><i class="fas fa-user-plus"></i><a href="/" style="color: white;"> Sign Up </a></button>
+            <button class="btn btn-primary btn-block" type="submit" style="margin-top: 10px;" ><i class="fas fa-user-plus"></i>Sign up</button>
+            <br>
+            <% if (locals.err) { %>
+                <div class="alert alert-danger alert-dismissable" role="alert"> 
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <p style="color:red"><%- err %></p> 
+                </div>
+            <% } %>
         </form>
     </div>             
 </body>
