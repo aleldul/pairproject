@@ -106,14 +106,17 @@
   </style>
 </head>
 <body style="background-image: url(https://newevolutiondesigns.com/images/freebies/red-wallpaper-2.jpg)" class="jumbotron">
-    <%- include('./partials/navbar.ejs') %>
-    <div class="container">
         <% if(dataLogin) { %>
-            <button onclick="location.href='/game'" type="button" class="btn btn col-lg-4" style="height: 80px; margin-top: 30%; margin-left: 35%; background-color: #FF4500; color: white; font-size: 25px; font-weight: bold;">Play</button>
+            <%- include('./partials/navbarLogin.ejs') %>
+            <div class="container">
+                <button onclick="location.href='/game'" type="button" class="btn btn col-lg-4" style="height: 80px; margin-top: 30%; margin-left: 35%; background-color: #FF4500; color: white; font-size: 25px; font-weight: bold;">Play</button>
+            </div>
         <% } else { %>
-            <button onclick="location.href='/signin'" type="button" class="btn btn col-lg-4" style="height: 80px; margin-top: 30%; margin-left: 35%; background-color: #FF4500; color: white; font-size: 25px; font-weight: bold;">Play</button>
+            <%- include('./partials/navbar.ejs') %>
+            <div class="container"></div>
+                <button onclick="location.href='/signin'" type="button" class="btn btn col-lg-4" style="height: 80px; margin-top: 30%; margin-left: 35%; background-color: #FF4500; color: white; font-size: 25px; font-weight: bold;">Play</button>
+            </div>
         <% } %>
-    </div>
     
 </body>
 </html>
