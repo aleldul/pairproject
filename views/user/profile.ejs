@@ -1,161 +1,208 @@
-<style>
-html, body {
-	 background: burlywood;
-	 font-family: 'Titillium Web', serif;
-	 line-height: 1.667;
-}
- body {
-	 color: #373231;
-	 font-size: 16px;
-	 font-weight: normal;
-}
- h1, h2, h3, h4, h5, h6 {
-	 margin: 0;
-	 padding: 0;
-	 line-height: normal;
-	 font-weight: normal;
-}
- h1 {
-	 font-size: 3rem;
-}
- h2, h3 {
-	 font-size: 1.5rem;
-}
- h3 {
-	 margin-bottom: 0.5em;
-}
- a {
-	 color: #2196f3;
-	 text-decoration: none;
-}
- a:hover {
-	 color: #0960a5;
-}
- ul {
-	 margin: 0;
-	 padding: 0;
-}
- ul.list-unstyled {
-	 list-style: none;
-}
- hr {
-	 height: 0;
-	 box-sizing: content-box;
-	 margin-top: 1em;
-	 margin-bottom: 1em;
-	 border: 0;
-	 border-top: 1px solid #eee;
-}
- .align-left {
-	 float: left;
-}
- .align-right {
-	 float: right;
-}
- .cf:after {
-	 content: " ";
-	 display: table;
-	 height: 10px;
-}
- .share {
-	 color: #bbdefb;
-	 transition: all 150ms ease-in-out;
-}
- .share:hover {
-	 color: #2196f3;
-}
- .alert {
-	 color: #e91e63;
-	 opacity: 0.5;
-	 transition: all 150ms ease-in-out;
-}
- .alert:hover {
-	 color: #e91e63;
-	 opacity: 1;
-}
- .card {
-	 max-width: 320px;
-	 margin: 1em auto 3em;
-	 border: 1px solid #d0cbca;
-	 background: #2196f3;
-	 transition: all 150ms ease-in-out;
-}
- .card:hover {
-	 background: #0960a5;
-	 border-color: #0960a5;
-	 box-shadow: 0 1px 40px rgba(0, 0, 0, 0.15);
-}
- .card header {
-	 text-align: center;
-	 padding: 1em;
-	 transition: all 150ms ease-in-out;
-}
- .card header h1, .card header h2 {
-	 color: white;
-	 margin: 0;
-	 line-height: 1.25;
-}
- .card header h2 {
-	 margin-bottom: 1em;
-}
- .card header img.avatar {
-	 border-radius: 50%;
-	 height: auto;
-	 padding: 10px;
-	 max-width: 128px;
-	 transition: all 150ms ease-in-out;
-	 margin-bottom: -50px;
-}
- .card header img.avatar:hover {
-	 border-radius: 10%;
-	 padding: 10px;
-}
- .card header.header_hover {
-	 background: #0960a5;
-}
- .card header.header_hover img.avatar {
-	 background: #0960a5;
-}
- .card.card_hover {
-	 border-color: #0960a5;
-}
- article, footer {
-	 background: #fff;
-	 padding: 1em;
-}
- article + footer {
-	 padding-top: 0;
-}
- footer.closure {
-	 text-align: center;
-	 font-size: 12px;
-	 color: #868686;
-}
- 
-</style>
-<%- include('../partials/navbar.ejs') %>
-<div class="card">
-    <header>
-      <h1>Elia Victor</h1>
-      <h2>GAMERS</h2>
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTynSetkTudpJGPUFVGN6yT5jNS7D8JLD2bOBj6HqiYKlJ6QhKR" class="avatar" />
-    </header>
-    <article>
-      <p>I am very addictive to Games.</p>
-    </article>
-  
-    <footer>
-      <h3>Find Elia Victor online</h3>
-      <ul class="list-unstyled">
-        <li><a href="https://twitter.com/"><i class="fa fa-fw fa-twitter"></i> Twitter</a></li>
-        <li><a href="https://github.com/"><i class="fa fa-fw fa-github"></i> Github</a></li>
-      </ul>
-      <hr>
-      <p class="cf">
-        <small>
-        <a class="align-left share" href="#"><i class="fa fa-fw fa-share"></i> share</a>
-        <a href="#" class="align-right alert">report <i class="fa fa-fw fa-exclamation"></i></a>
-        </small>
-      </p>
-    </footer>
-  </div> <!--end card-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Profile - Reaction Game</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <style>
+		.profile 
+		{
+				min-height: 355px;
+				display: inline-block;
+				}
+		.divider 
+		{
+				border-top:1px solid white;
+				}
+		.emphasis 
+		{
+				border-top: 4px solid transparent;
+				}
+		.emphasis:hover 
+		{
+				border-top: 4px solid #FF4500;
+				}
+		.emphasis h2
+		{
+				margin-bottom:0;
+				}
+		span.tags 
+		{
+				background: #FF4500;
+				border-radius: 2px;
+				color: #f5f5f5;
+				font-weight: bold;
+				padding: 2px 4px;
+				}
+    /* sign in FORM */
+    #logreg-forms{
+        width:412px;
+        margin:10vh auto;
+        background-color:#f3f3f3;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    }
+    #logreg-forms form {
+        width: 100%;
+        max-width: 410px;
+        padding: 15px;
+        margin: auto;
+    }
+    #logreg-forms .form-control {
+        position: relative;
+        box-sizing: border-box;
+        height: auto;
+        padding: 10px;
+        font-size: 16px;
+    }
+    #logreg-forms .form-control:focus { z-index: 2; }
+    #logreg-forms .form-signin input[type="email"] {
+        margin-bottom: -1px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    #logreg-forms .form-signin input[type="password"] {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    #logreg-forms .social-login{
+        width:390px;
+        margin:0 auto;
+        margin-bottom: 14px;
+    }
+    #logreg-forms .social-btn{
+        font-weight: 100;
+        color:white;
+        width:190px;
+        font-size: 0.9rem;
+    }
+
+    #logreg-forms a{
+        display: block;
+        padding-top:10px;
+        color:lightseagreen;
+    }
+
+    #logreg-form .lines{
+        width:200px;
+        border:1px solid red;
+    }
+    #logreg-forms button[type="submit"]{ margin-top:10px; }
+    #logreg-forms .facebook-btn{  background-color:#3C589C; }
+    #logreg-forms .google-btn{ background-color: #DF4B3B; }
+    #logreg-forms .form-reset, #logreg-forms .form-signup{ display: none; }
+    #logreg-forms .form-signup .social-btn{ width:210px; }
+    #logreg-forms .form-signup input { margin-bottom: 2px;}
+    .form-signup .social-login{
+        width:210px !important;
+        margin: 0 auto;
+    }
+    /* Mobile */
+    @media screen and (max-width:500px){
+        #logreg-forms{
+            width:300px;
+        }        
+        #logreg-forms  .social-login{
+            width:200px;
+            margin:0 auto;
+            margin-bottom: 10px;
+        }
+        #logreg-forms  .social-btn{
+            font-size: 1.3rem;
+            font-weight: 100;
+            color:white;
+            width:200px;
+            height: 56px; 
+        }
+        #logreg-forms .social-btn:nth-child(1){
+            margin-bottom: 5px;
+        }
+        #logreg-forms .social-btn span{
+            display: none;
+        }
+        #logreg-forms  .facebook-btn:after{
+            content:'Facebook';
+        }
+        #logreg-forms  .google-btn:after{
+            content:'Google+';
+        }
+    }
+  </style>
+</head>
+<body style="background-image: url(https://images.wallpaperscraft.com/image/red_black_abstract_496_1920x1080.jpg); background-size: cover; background-position-x: -10px; height: 800px" class="jumbotron">
+<%- include('../partials/navbarLogin.ejs') %>
+<div class="container">
+	<br><br>
+		<div class="row">
+			<div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+				 <div class="well profile" style="background-color: black; color: white">
+							<div class="col-sm-12">
+									<div class="col-xs-12 col-sm-8">
+											<h2>Profile</h2>
+											<p><strong>Username: </strong> username </p>
+											<p><strong>Email: </strong> email@mail.com </p>
+											<button class="btn btn-block" onclick="location.href='/game'" style="margin-top: -3px; margin-bottom: 10px;background-color: #FF4500"><span class="fa fa-plus-circle"></span> Play </button>
+									</div>             
+									<div class="col-xs-12 col-sm-4 text-center">
+											<figure>
+													<img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/contact-icon.png" alt="" class="img-circle img-responsive">	
+													<button class="btn btn-block" style="margin-top: 20px; margin-bottom: 10px; background-color: white; color:#FF4500;"><span class="fa fa-plus-circle"></span> Edit Profile </button>
+											</figure>
+									</div>
+							</div>            
+							<div class="col-xs-12 divider text-center">
+									<div class="col-xs-12 col-xl-2" style="margin-bottom: 8px">
+											<h2><strong>Top Score History</strong></h2>                    
+									</div>
+									<div class="col-xs-12 col-sm-4 emphasis">
+											<h3><strong> 0 </strong></h3>                    
+											<p><small>Level 1</small></p>
+									</div>
+									<div class="col-xs-12 col-sm-4 emphasis">
+											<h3><strong>0</strong></h3>                    
+											<p><small>Level 2</small></p>
+									</div>
+									<div class="col-xs-12 col-sm-4 emphasis">
+											<h3><strong>0</strong></h3>                     
+											<p><small>Level 3</small></p>
+									</div>
+									<div class="col-xs-12 col-sm-4 emphasis">
+											<h3><strong>0</strong></h3>                     
+											<p><small>Level 4</small></p>
+									</div>
+									<div class="col-xs-12 col-sm-4 emphasis">
+											<h3><strong>0</strong></h3>                   
+											<p><small>Level 5</small></p>
+									</div>
+									<div class="col-xs-12 col-sm-4 emphasis">
+											<h3><strong>0</strong></h3>                    
+											<p><small>Level 6</small></p>
+									</div>
+									<div class="col-xs-12 col-sm-4 emphasis">
+											<h3><strong>0</strong></h3>                     
+											<p><small>Level 7</small></p>
+									</div>
+									<div class="col-xs-12 col-sm-4 emphasis">
+											<h3><strong>0</strong></h3>                     
+											<p><small>Level 8</small></p>
+									</div><div class="col-xs-12 col-sm-4 emphasis">
+											<h3><strong>0</strong></h3>                     
+											<p><small>Level 9</small></p>
+									</div>
+									<div class="col-xs-12 col-xl-2 emphasis">
+											<h3><strong>0</strong></h3>                     
+											<p><small>Level 10</small></p>
+									</div>
+							</div>
+				 </div>                 
+			</div>
+		</div>
+	</div>    
+</body>
+</html>
+
