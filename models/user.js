@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       validate: {
         len: {
-          args: [8, 30],
+          args: [8, 64],
           msg: "Password minimal 8 character"
         }
       }
