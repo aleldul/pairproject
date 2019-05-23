@@ -3,6 +3,7 @@ const app = express()
 const port = 3000
 const {User} = require('./models')
 const gameRoute = require('./routes/routeGame')
+const bcrypt = require('bcryptjs')
 const session = require('express-session')
 
 app.use(express.static(__dirname + '/views'));
@@ -40,7 +41,8 @@ app.post('/signin', (req, res) => {
     })
     .then(user => {
         if (user) {
-            if (user.password == req.body.password) {
+            if (bcrypt.compareSync(req.body.password, user.password)) {
+            // if (user.password == req.body.password) {
                 res.send(user)
             } else {
                 throw Error('Wrong password')
@@ -61,23 +63,26 @@ app.get('/signup', (req,res) => {
 })
 
 app.post('/signup', (req, res) => {
-    console.log('test masuk')
-    if (req.body.repeatpass != req.body.password) {
-        throw Error('Repeat Password and Password not match')
+    if (req.body.password != req.body.repeatpass) {
+        let errSignUp = "Error : Password and Re-password not match"
+        res.render('user/signup.ejs', {err: errSignUp})
     } else {
-        let temp = {
-            username: req.body.username,
-            email: req.body.email,
-            password: req.body.password
-        }
-        User.create(temp)
-        console.log(temp)
-        .then(success => {
-            res.send(success)
-        })
-        .catch(err => {
-            res.render('user/signup.ejs', {err: err})
-        })
+    var salt = bcrypt.genSaltSync(10);
+    var hash = bcrypt.hashSync(req.body.password, salt);
+
+    let temp = {
+        username: req.body.username,
+        email: req.body.email,
+        password: hash
+    }
+
+    User.create(temp)
+    .then(success => {
+        res.send(success)
+    })
+    .catch(err => {
+        res.render('user/signup.ejs', {err: err})
+    })
     }
 })
 
