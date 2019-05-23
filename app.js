@@ -8,6 +8,7 @@ const session = require('express-session')
 const checkSession = require('./middleware/session')
 const checkSession2 = require('./middleware/session2')
 const sortData = require('./helpers/sort')
+const playerScore = require('./helpers/playerScore')
 
 app.use(express.static(__dirname + '/views'));
 
@@ -100,7 +101,35 @@ app.post('/signup',  (req, res) => {
 })
 
 app.get('/profile', checkSession, (req, res) => {
-    res.render('user/profile.ejs')
+    let dataPlay;
+    Play.findAll({
+        where : {
+            UserId : req.session.user.id
+        },
+        include : [{
+            model : User
+        },{
+            model : Game
+        }]
+    })
+        .then(data => {
+            dataPlay = data
+            return Game.findAll()
+        })
+        .then(data => {
+            let allData = playerScore(dataPlay, data)
+            let obj = {
+                gameid : allData[0],
+                gameidKey : Object.keys(allData[0]),
+                user : allData[1]
+            }
+            console.log(obj)
+            res.render('user/profile.ejs', obj)
+        })
+        .catch(err => {
+            console.log(err)
+            res.send(err)
+        })
 })
 
 app.get('/leaderboard', checkSession, (req, res) => {

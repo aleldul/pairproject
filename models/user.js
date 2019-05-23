@@ -1,4 +1,6 @@
 'use strict';
+const {Play} = require('../models')
+
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     username: {
@@ -41,6 +43,27 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   }, {});
+
+  User.lastPlay = function(id){
+    return new Promise ((resolve, reject) => {
+
+      User.findOne({
+        where : {
+          id : id
+        },
+        include : [{
+          model : Play
+        }]
+      })
+      .then( data => {
+        resolve( data)
+      })
+      .catch(err => {
+        reject( err)
+      })
+    })
+  }
+
   User.associate = function(models) {
     // associations can be defined here
     User.hasMany(models.Play)
