@@ -1,12 +1,13 @@
 const express = require('express')
 const app = express()
 const port = 3000
-const {User} = require('./models')
+const {User, Play, Game, Board} = require('./models')
 const gameRoute = require('./routes/routeGame')
 const bcrypt = require('bcryptjs')
 const session = require('express-session')
 const checkSession = require('./middleware/session')
 const checkSession2 = require('./middleware/session2')
+const sortData = require('./helpers/sort')
 
 app.use(express.static(__dirname + '/views'));
 
@@ -60,8 +61,11 @@ app.post('/signin', (req, res) => {
     })
 })
 
-app.get('/signout', checkSession2, (req, res) => {
-    res.render('home.ejs')
+app.get('/signout', checkSession, (req, res) => {
+    req.session.destroy(err => {
+        res.send(err)
+    })
+    res.redirect('/')
 })
 
 app.get('/signup', checkSession2, (req,res) => {
@@ -97,6 +101,31 @@ app.post('/signup',  (req, res) => {
 
 app.get('/profile', checkSession, (req, res) => {
     res.render('user/profile.ejs')
+})
+
+app.get('/leaderboard', checkSession, (req, res) => {
+    Play.findAll({
+        include : [{
+            model : User
+        },{
+            model : Game
+        }]
+    })
+    .then(data => {
+        data.forEach(element => {
+            
+            console.log(element.dataValues)
+        });
+        data = sortData(data).slice(0,5)
+        
+        res.render('leaderboard.ejs', {
+            data : data
+        })
+    })
+    .catch(err => {
+        console.log(err)
+        res.send(err)
+    })
 })
 
 

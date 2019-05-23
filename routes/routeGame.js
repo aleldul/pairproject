@@ -92,7 +92,7 @@ route.get('/level/:id', (req, res) => {
 route.post('/level/:id', (req, res) => {
     console.log(req.body.score, '==========')
     Play.create({
-        UserId : 0, //session
+        UserId : req.session.user.id, //session
         GameId : req.params.id,
         totalScore : req.body.score
     })
