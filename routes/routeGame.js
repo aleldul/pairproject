@@ -33,7 +33,7 @@ route.get('/', (req,res) => {
         }]
     })
         .then(data => {
-            res.render('game/game.ejs', {
+            res.render('map/map.ejs', {
                 data : data
             })
         })
@@ -101,10 +101,6 @@ route.post('/level/:id', (req, res) => {
         .catch(err => {
             res.send(err)
         })
-})
-
-route.get('/map', (req, res)=> {
-    res.render('map/map.ejs')
 })
 
 module.exports = route
