@@ -1,10 +1,10 @@
 function session(req, res, next){
-    console.log(req.session, '=============== session')
+    console.log(req.session, '=============== session2')
     if(req.session.user){
-        next()
+        res.redirect('/')
     }
     else{
-        res.redirect('/')
+        next()
     }
     
 }

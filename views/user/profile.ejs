@@ -1,0 +1,161 @@
+<style>
+html, body {
+	 background: burlywood;
+	 font-family: 'Titillium Web', serif;
+	 line-height: 1.667;
+}
+ body {
+	 color: #373231;
+	 font-size: 16px;
+	 font-weight: normal;
+}
+ h1, h2, h3, h4, h5, h6 {
+	 margin: 0;
+	 padding: 0;
+	 line-height: normal;
+	 font-weight: normal;
+}
+ h1 {
+	 font-size: 3rem;
+}
+ h2, h3 {
+	 font-size: 1.5rem;
+}
+ h3 {
+	 margin-bottom: 0.5em;
+}
+ a {
+	 color: #2196f3;
+	 text-decoration: none;
+}
+ a:hover {
+	 color: #0960a5;
+}
+ ul {
+	 margin: 0;
+	 padding: 0;
+}
+ ul.list-unstyled {
+	 list-style: none;
+}
+ hr {
+	 height: 0;
+	 box-sizing: content-box;
+	 margin-top: 1em;
+	 margin-bottom: 1em;
+	 border: 0;
+	 border-top: 1px solid #eee;
+}
+ .align-left {
+	 float: left;
+}
+ .align-right {
+	 float: right;
+}
+ .cf:after {
+	 content: " ";
+	 display: table;
+	 height: 10px;
+}
+ .share {
+	 color: #bbdefb;
+	 transition: all 150ms ease-in-out;
+}
+ .share:hover {
+	 color: #2196f3;
+}
+ .alert {
+	 color: #e91e63;
+	 opacity: 0.5;
+	 transition: all 150ms ease-in-out;
+}
+ .alert:hover {
+	 color: #e91e63;
+	 opacity: 1;
+}
+ .card {
+	 max-width: 320px;
+	 margin: 1em auto 3em;
+	 border: 1px solid #d0cbca;
+	 background: #2196f3;
+	 transition: all 150ms ease-in-out;
+}
+ .card:hover {
+	 background: #0960a5;
+	 border-color: #0960a5;
+	 box-shadow: 0 1px 40px rgba(0, 0, 0, 0.15);
+}
+ .card header {
+	 text-align: center;
+	 padding: 1em;
+	 transition: all 150ms ease-in-out;
+}
+ .card header h1, .card header h2 {
+	 color: white;
+	 margin: 0;
+	 line-height: 1.25;
+}
+ .card header h2 {
+	 margin-bottom: 1em;
+}
+ .card header img.avatar {
+	 border-radius: 50%;
+	 height: auto;
+	 padding: 10px;
+	 max-width: 128px;
+	 transition: all 150ms ease-in-out;
+	 margin-bottom: -50px;
+}
+ .card header img.avatar:hover {
+	 border-radius: 10%;
+	 padding: 10px;
+}
+ .card header.header_hover {
+	 background: #0960a5;
+}
+ .card header.header_hover img.avatar {
+	 background: #0960a5;
+}
+ .card.card_hover {
+	 border-color: #0960a5;
+}
+ article, footer {
+	 background: #fff;
+	 padding: 1em;
+}
+ article + footer {
+	 padding-top: 0;
+}
+ footer.closure {
+	 text-align: center;
+	 font-size: 12px;
+	 color: #868686;
+}
+ 
+</style>
+<%- include('../partials/navbar.ejs') %>
+<div class="card">
+    <header>
+      <h1>Elia Victor</h1>
+      <h2>GAMERS</h2>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTynSetkTudpJGPUFVGN6yT5jNS7D8JLD2bOBj6HqiYKlJ6QhKR" class="avatar" />
+    </header>
+    <article>
+      <p>I am very addictive to Games.</p>
+    </article>
+  
+    <footer>
+      <h3>Find Elia Victor online</h3>
+      <ul class="list-unstyled">
+        <li><a href="https://twitter.com/"><i class="fa fa-fw fa-twitter"></i> Twitter</a></li>
+        <li><a href="https://github.com/"><i class="fa fa-fw fa-github"></i> Github</a></li>
+      </ul>
+      <hr>
+      <p class="cf">
+        <small>
+        <a class="align-left share" href="#"><i class="fa fa-fw fa-share"></i> share</a>
+        <a href="#" class="align-right alert">report <i class="fa fa-fw fa-exclamation"></i></a>
+        </small>
+      </p>
+    </footer>
+  </div> <!--end card-->
