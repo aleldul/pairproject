@@ -103,6 +103,10 @@ app.get('/profile', checkSession, (req, res) => {
     res.render('user/profile.ejs')
 })
 
+app.get('/profile/edit', checkSession, (req, res) => {
+    res.render('user/editProfile.ejs')
+})
+
 app.get('/leaderboard', checkSession, (req, res) => {
     Play.findAll({
         include : [{

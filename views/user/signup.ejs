@@ -117,21 +117,17 @@
             <!-- <div class="social-login"> -->
                 <!-- <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Sign up with Facebook</span> </button> -->
             <!-- </div> -->
-            
-            <p style="text-align:center">OR</p>
-
             <input type="text" name="username" class="form-control" placeholder="Username" required autofocus="">
             <input type="email" name="email" class="form-control" placeholder="Email address" required autofocus="">
             <input type="password" name="password" class="form-control" placeholder="Password" required autofocus="">
             <input type="password" name="repeatpass" class="form-control" placeholder="Repeat Password" required autofocus="">
-            <button class="btn btn-primary btn-block" type="submit" style="margin-top: 10px;" ><i class="fas fa-user-plus"></i>Sign up</button>
-            <br>
-            <div class="g-signin2 social-btn" data-onsuccess="onSignIn"></div>
-            <br>
+            <button class="btn btn-primary btn-block" type="submit" style="margin-top: 10px; background-color: #FF4500; color: white" ><i class="fas fa-user-plus"></i>Sign up</button>
+            <br> <p style="text-align:center">OR</p>
+            <div class="g-signin2 social-btn" data-onsuccess="onSignIn"></div> <br>
             <% if (locals.err) { %>
                 <div class="alert alert-danger alert-dismissable" role="alert"> 
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <p style="color:red"><%- err %></p> 
+                        <p style="color:#FF4500"><%- err %></p> 
                 </div>
             <% } %>
         </form>
