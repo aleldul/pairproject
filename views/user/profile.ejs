@@ -146,14 +146,13 @@
 											<h2>Profile</h2>
 											<p><strong>Username: </strong> <%= user.username %> </p>
 											<p><strong>Email: </strong> <%= user.email %> </p>
-											<button class="btn btn-block" onclick="location.href='/game'" style="margin-top: -3px; margin-bottom: 10px;background-color: #FF4500"><span class="fa fa-plus-circle"></span> Play </button>
 									</div>             
 									<div class="col-xs-12 col-sm-4 text-center">
 											<figure>
-													<img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/contact-icon.png" alt="" class="img-circle img-responsive">	
-													<button class="btn btn-block" style="margin-top: 20px; margin-bottom: 10px; background-color: white; color:#FF4500;"><span class="fa fa-plus-circle"></span> Edit Profile </button>
+                                                    <img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/contact-icon.png" alt="" class="img-circle img-responsive">	
+                                                    <p style="font-size: 12px; float: right;">Last play: </p>
 											</figure>
-									</div>
+                                    </div>
 							</div>            
 							<div class="col-xs-12 divider text-center">
 									<div class="col-xs-12 col-xl-2" style="margin-bottom: 8px">
@@ -174,6 +173,8 @@
                                         <% } %>
                                     <% }) %>
 							</div>
+              <br>
+              <button class="btn btn-block" onclick="location.href='/game'" style="margin-top: -3px; margin-bottom: 10px;background-color: #FF4500"><span class="fa fa-plus-circle"></span> Play </button>
 				 </div>                 
 			</div>
 		</div>
