@@ -60,6 +60,10 @@ app.post('/signin', (req, res) => {
     })
 })
 
+app.get('/signout', checkSession2, (req, res) => {
+    res.render('home.ejs')
+})
+
 app.get('/signup', checkSession2, (req,res) => {
     res.render('./user/signup.ejs', {
         errSignUp: req.query.errMsg

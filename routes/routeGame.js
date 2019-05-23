@@ -4,29 +4,30 @@ const {User, Play, Game, Board} = require('../models')
 
 route.get('/', (req,res) => {
     // User.findOne({
-        //     where : {
-        //         id : ''
-        //     },
-        //     include : [{
-        //         model : Play,
-        //         include : [{
-        //             model : Game,
-        //             include : [{
-        //                 model : Board
-        //             }]
-        //         }]
-        //     }]
-        // })
-        //     .then(found => {
-        //         if(found){
-        //             res.render('game/gameByLevel.ejs', {
-        //                 gameData : found.dataValues
-        //             })
-        //         }
-        //     })
-        //     .catch(err => {
-        //         res.send(err)
-        //     })
+    //         where : {
+    //             id : req.session.user.id
+    //         },
+    //         include : [{
+    //             model : Play,
+    //             include : [{
+    //                 model : Game,
+    //                 include : [{
+    //                     model : Board
+    //                 }]
+    //             }]
+    //         }]
+    //     })
+            // .then(found => {
+            //     if(found){
+            //         res.render('game/gameByLevel.ejs', {
+            //             gameData : found.dataValues,
+            //             dataLogin: req.session.user
+            //         })
+            //     }
+            // })
+            // .catch(err => {
+            //     res.send(err)
+            // })
     Game.findAll({
         include : [{
             model : Board
@@ -34,7 +35,8 @@ route.get('/', (req,res) => {
     })
         .then(data => {
             res.render('map/map.ejs', {
-                data : data
+                data : data,
+                dataLogin: req.session.user
             })
         })
         .catch(err => {
