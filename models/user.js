@@ -39,7 +39,22 @@ module.exports = (sequelize, DataTypes) => {
     email: {
       type: DataTypes.STRING,
       validate: {
-        isEmail: true
+        isEmail: true,
+        customIsUnique(value) {
+          return User.findOne({
+            where: {
+              email: value
+            }
+          })
+          .then(data => {
+            if (data) {
+              throw new Error(`Email used, please use other email`)
+            }
+          })
+          .catch(err => {
+            throw err
+          })
+        }
       }
     }
   }, {});

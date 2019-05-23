@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = process.env.port || 3000
 const {User, Play, Game, Board} = require('./models')
 const gameRoute = require('./routes/routeGame')
 const bcrypt = require('bcryptjs')
