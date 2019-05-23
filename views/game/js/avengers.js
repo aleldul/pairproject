@@ -1,4 +1,6 @@
-
+let script_tag = document.getElementById('data')
+let dataGame = script_tag.getAttribute('data');
+dataGame = JSON.parse(dataGame)
 
 function randomExcluded(min, max, excluded) {
     var n = Math.floor(Math.random() * (max-min) + min);
@@ -14,11 +16,16 @@ function randomExcluded(min, max, excluded) {
   function gameEnd() {
   
     var endgifs = ["https://www.dropbox.com/s/x56jqmgqdh4weh9/congrats.gif?raw=1", "https://www.dropbox.com/s/zpcj50qk7unal91/congrats2.gif?raw=1", "https://www.dropbox.com/s/agsedov8mlnxh9j/congrats3.gif?raw=1", "https://www.dropbox.com/s/ck1ptya4uxthtl8/congrats4.gif?raw=1"];
-    $('#game').removeClass('in-game').html('<div style="text-align: center"><img class="congratsimg" src="'+endgifs[Math.floor((Math.random() * 4))]+'"/><p class="scored">YOU SCORED <strong style="font-size: 53px;display: block;">'+score+'</strong></p><button id="playgame">Play Again</button><div class="social-share">Share your score: <ul><li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//bluegrasscoms.com/halloween" target="_blank"><img src="https://www.dropbox.com/s/vsfuchbzym4cl7i/facebook.svg?raw=1"/></a></li><li><a href="https://twitter.com/home?status=I%20scored%20'+score+'%20on%20the%20Wanted%20-%20Dead%20or%20Alive%20Halloween%20Game,%20try%20and%20beat%20my%20score%20here%20https%3A//bit.ly/2ECobCh%20%23WantedDeadOrAlive%20%23Halloween%20%23Bluegrasscoms" target="_blank"><img src="https://www.dropbox.com/s/ulp7ittyz8wbgy5/twitter.svg?raw=1"/></a></li></ul></div></div>');
+    $('#game').removeClass('in-game').html(`<div style="text-align: center"><img class="congratsimg" src="`+endgifs[Math.floor((Math.random() * 4))]+`"/><p class="scored">YOU SCORED <strong style="font-size: 53px;display: block;">`+score+`</strong></p><button id="playgame">Play Again</button> <button id="nextLevel">Next Level</button><div class="social-share">Share your score: <ul><li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//bluegrasscoms.com/halloween" target="_blank"><img src="https://www.dropbox.com/s/vsfuchbzym4cl7i/facebook.svg?raw=1"/></a></li><li><a href="https://twitter.com/home?status=I%20scored%20`+score+`%20on%20the%20Wanted%20-%20Dead%20or%20Alive%20Halloween%20Game,%20try%20and%20beat%20my%20score%20here%20https%3A//bit.ly/2ECobCh%20%23WantedDeadOrAlive%20%23Halloween%20%23Bluegrasscoms" target="_blank"><img src="https://www.dropbox.com/s/ulp7ittyz8wbgy5/twitter.svg?raw=1"/></a></li></ul></div></div>`);
     $('#playgame').on('click', function() {
       score = 0;
       startgame();
     });
+    $('#nextLevel').on('click', function() {
+      score = 0;
+      startgame();
+    });
+
   }
   
   function roundFunction() {
@@ -127,8 +134,8 @@ function randomExcluded(min, max, excluded) {
   }
   
   function startgame() {
-  
-    $('#game').addClass('in-game').html('<h2 class="gameheading">AVENGERS</h2><div id="game-target"></div><div id="game-main"></div><div id="score">0</div><div id="counter">30</div>');
+    
+    $('#game').addClass('in-game').html(`<h2 class="gameheading">AVENGERS</h2><div id="game-target"></div><div id="game-main"></div><div id="score">0</div><div id="counter">${dataGame.time}</div>`);
   
     round();
   
@@ -144,8 +151,7 @@ function randomExcluded(min, max, excluded) {
         firsticon.remove();
   
       }, 1000);
-      
-      var number = 30,
+      var number = dataGame.time,
           gameCounter = $('#counter');
   
       var counter = setInterval(function() {
@@ -157,7 +163,7 @@ function randomExcluded(min, max, excluded) {
         clearInterval(timer);
         clearInterval(counter);
         gameEnd();
-      }, 30000)
+      }, Number(`${dataGame.time}000`))
   
     }, 3000);
   
@@ -184,15 +190,11 @@ function randomExcluded(min, max, excluded) {
   }
   
   $(document).ready(function() {
-    console.log('jalan nih')
-    if ($(window).width() > 800) {
-      var video = '<video autoplay muted loop id="gameVideo"><source src="https://www.dropbox.com/s/pqdvbksztp2wyri/background.mp4?raw=1" type="video/mp4"></video>';
-      $(video).prependTo('body');
-      $('body').addClass('hasvideo');
-    }
+       
   
-    $('#game').html('<div class="intro"><h2 class="gameheading"><span>AVENGERS MODE</span> Have Fun !</h2><p>Find the wanted character quickly before they move to earn 5 points, click on the wrong character and lose a point but work fast, you only have <strong>30 seconds</strong>! <span style="display: block;margin-top: 10px"><strong>Ghooooooood luuuck!</strong></span></p><button id="startgame">Start Game</button></div>');
+    $('#game').html(`<div class="intro"><h2 class="gameheading"><span>AVENGERS MODE</span> Have Fun !</h2><p>Find the wanted character quickly before they move to earn 5 points, click on the wrong character and lose a point but work fast, you only have <strong>${dataGame.time} seconds</strong>! <span style="display: block;margin-top: 10px"><strong>Ghooooooood luuuck!</strong></span></p><button id="startgame">Start Game</button></div>`);
     $('#game').on('click', '#startgame', function() {
+      
       startgame();
     });
   

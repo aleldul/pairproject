@@ -1,4 +1,6 @@
-
+let script_tag = document.getElementById('data')
+let dataGame = script_tag.getAttribute('data');
+dataGame = JSON.parse(dataGame)
 
 function randomExcluded(min, max, excluded) {
     var n = Math.floor(Math.random() * (max-min) + min);
@@ -127,8 +129,8 @@ function randomExcluded(min, max, excluded) {
   }
   
   function startgame() {
-  
-    $('#game').addClass('in-game').html('<h2 class="gameheading">DC Comics</h2><div id="game-target"></div><div id="game-main"></div><div id="score">0</div><div id="counter">30</div>');
+    
+    $('#game').addClass('in-game').html(`<h2 class="gameheading">DC COMICS</h2><div id="game-target"></div><div id="game-main"></div><div id="score">0</div><div id="counter">${dataGame.time}</div>`);
   
     round();
   
@@ -144,8 +146,7 @@ function randomExcluded(min, max, excluded) {
         firsticon.remove();
   
       }, 1000);
-      
-      var number = 30,
+      var number = dataGame.time,
           gameCounter = $('#counter');
   
       var counter = setInterval(function() {
@@ -157,7 +158,7 @@ function randomExcluded(min, max, excluded) {
         clearInterval(timer);
         clearInterval(counter);
         gameEnd();
-      }, 30000)
+      }, Number(`${dataGame.time}000`))
   
     }, 3000);
   
@@ -185,14 +186,10 @@ function randomExcluded(min, max, excluded) {
   
   $(document).ready(function() {
     console.log('jalan nih')
-    if ($(window).width() > 800) {
-      var video = '<video autoplay muted loop id="gameVideo"><source src="https://www.dropbox.com/s/pqdvbksztp2wyri/background.mp4?raw=1" type="video/mp4"></video>';
-      $(video).prependTo('body');
-      $('body').addClass('hasvideo');
-    }
-  
-    $('#game').html('<div class="intro"><h2 class="gameheading"><span>DC Comics MODE</span> Have Fun ! </h2><p>Find the wanted character quickly before they move to earn 5 points, click on the wrong character and lose a point but work fast, you only have <strong>30 seconds</strong>! <span style="display: block;margin-top: 10px"><strong>Ghooooooood luuuck!</strong></span></p><button id="startgame">Start Game</button></div>');
+    
+    $('#game').html(`<div class="intro"><h2 class="gameheading"><span>DC Comics MODE</span> Have Fun !</h2><p>Find the wanted character quickly before they move to earn 5 points, click on the wrong character and lose a point but work fast, you only have <strong>${dataGame.time} seconds</strong>! <span style="display: block;margin-top: 10px"><strong>Ghooooooood luuuck!</strong></span></p><button id="startgame">Start Game</button></div>`);
     $('#game').on('click', '#startgame', function() {
+      
       startgame();
     });
   
