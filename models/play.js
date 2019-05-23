@@ -4,7 +4,10 @@ module.exports = (sequelize, DataTypes) => {
     UserId: DataTypes.INTEGER,
     GameId: DataTypes.INTEGER,
     totalScore: DataTypes.INTEGER,
-    status: DataTypes.STRING
+    status: {
+      type : DataTypes.STRING,
+      defaultValue : 'active'
+    }
   }, {});
   Play.associate = function(models) {
     // associations can be defined here
