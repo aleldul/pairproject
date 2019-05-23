@@ -112,17 +112,16 @@
             <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>
             <input type="text" name="username" class="form-control" placeholder="Username" required="" autofocus="">
             <input type="password" name="password" class="form-control" placeholder="Password" required="">
-            <button class="btn btn-primary btn-block" style="color: white" type="submit"><i class="fas fa-sign-in-alt"></i> Sign in</button>
-            <a href="#" id="forgot_pswd">Forgot password?</a>
-            <br>
+            <button class="btn btn-primary btn-block" style="color: white; background-color: #FF4500" type="submit"><i class="fas fa-sign-in-alt"></i> Sign in</button>
+            <a href="#" id="forgot_pswd" style="text-align: right; color: black">Forgot password?</a>
             <% if (locals.err) { %>
                 <div class="alert alert-danger alert-dismissable" role="alert"> 
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <p style="color:red"><%- err %></p> 
+                        <p style="color:#FF4500"><%- err %></p> 
                 </div>
             <% } %>
             <p>Don't have an account?</p>
-            <a href="/signup" class="btn btn-info btn-block" type="button" id="btn-signup" style="color: black"><i class="fas fa-user-plus"></i> Sign up</a>
+            <a href="/signup" class="btn btn-info btn-block" type="button" id="btn-signup" style="color: white; background-color: black"><i class="fas fa-user-plus"></i> Sign up</a>
         </form>
     </div>             
 </body>
