@@ -50,7 +50,7 @@ app.post('/signin', (req, res) => {
         }
     })
     .catch(err => {
-        res.render('home.ejs', {err: err})
+        res.render('user/signin.ejs', {err: err})
     })
 })
 
@@ -76,7 +76,7 @@ app.post('/signup', (req, res) => {
             res.send(success)
         })
         .catch(err => {
-            res.render('home.ejs', {err: err})
+            res.render('user/signup.ejs', {err: err})
         })
     }
 })
