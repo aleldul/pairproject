@@ -1,7 +1,6 @@
-let script_tag = document.getElementById('data')
-let dataGame = script_tag.getAttribute('data');
+let dataGame = $('#data').attr('data');
 dataGame = JSON.parse(dataGame)
-// console.log(dataGame)
+
 
 function randomExcluded(min, max, excluded) {
   var n = Math.floor(Math.random() * (max-min) + min);
@@ -24,7 +23,6 @@ function gameEnd() {
   });
   $('#nextlevel').on('click', function() {
     $( "#formScore" ).trigger('submit');
-    // window.location.replace(`/game/level/${dataGame.id + 1}`)
   });
 }
 
