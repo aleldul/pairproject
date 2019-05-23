@@ -108,13 +108,13 @@
 <body style="background-image: url(https://newevolutiondesigns.com/images/freebies/red-wallpaper-2.jpg)" class="jumbotron">
     <%- include('./partials/navbar.ejs') %>
     <div class="container">
-        <button id="play" type="button" class="btn btn col-lg-4" style="height: 80px; margin-top: 30%; margin-left: 35%; background-color: #FF4500; color: white; font-size: 25px; font-weight: bold;">Play</button>
+        <% if(dataLogin) { %>
+            <button onclick="location.href='/game'" type="button" class="btn btn col-lg-4" style="height: 80px; margin-top: 30%; margin-left: 35%; background-color: #FF4500; color: white; font-size: 25px; font-weight: bold;">Play</button>
+        <% } else { %>
+            <button onclick="location.href='/signin'" type="button" class="btn btn col-lg-4" style="height: 80px; margin-top: 30%; margin-left: 35%; background-color: #FF4500; color: white; font-size: 25px; font-weight: bold;">Play</button>
+        <% } %>
     </div>
+    
 </body>
 </html>
 
-<script type="text/javascript">
-    document.getElementById("play").onclick = function () {
-        location.href = "/game/level/1";
-    };
-</script>

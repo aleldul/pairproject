@@ -5,29 +5,29 @@ const {User} = require('./models')
 const gameRoute = require('./routes/routeGame')
 const bcrypt = require('bcryptjs')
 const session = require('express-session')
+const checkSession = require('./middleware/session')
+const checkSession2 = require('./middleware/session2')
 
 app.use(express.static(__dirname + '/views'));
 
 app.use(express.urlencoded({extended: false}));
 
 app.use(session({
-    secret: 'reactionGame',
-    cookie: {}
+    secret: 'keyboard cat',
+    resave: true,
+    saveUninitialized: true,
+    cookie: { secure: false }
 }))
 
-// app.use(session(sess))
-
-app.get('/map', (req,res) => {
-    res.render('./game/3Dmap.ejs')
-})
-
-app.use('/game', gameRoute)
+app.use('/game', checkSession, gameRoute)
 
 app.get('/', (req, res) => {
-    res.render('home.ejs')
+    res.render('home.ejs', {
+        dataLogin : req.session.user
+    })
 })
 
-app.get('/signin', (req, res) => {
+app.get('/signin', checkSession2, (req, res) => {
     res.render('user/signin.ejs', {
         errSignIn: req.query.errMsg
     })
@@ -42,8 +42,12 @@ app.post('/signin', (req, res) => {
     .then(user => {
         if (user) {
             if (bcrypt.compareSync(req.body.password, user.password)) {
-            // if (user.password == req.body.password) {
-                res.send(user)
+                req.session.user = {
+                    id : user.id,
+                    username : user.username
+                }
+                console.log(req.session, '$$$$$$$$$$$$$$$$')
+                res.redirect('/')
             } else {
                 throw Error('Wrong password')
             }
@@ -56,13 +60,13 @@ app.post('/signin', (req, res) => {
     })
 })
 
-app.get('/signup', (req,res) => {
+app.get('/signup', checkSession2, (req,res) => {
     res.render('./user/signup.ejs', {
         errSignUp: req.query.errMsg
     })
 })
 
-app.post('/signup', (req, res) => {
+app.post('/signup',  (req, res) => {
     if (req.body.password != req.body.repeatpass) {
         let errSignUp = "Error : Password and Re-password not match"
         res.render('user/signup.ejs', {err: errSignUp})
@@ -78,7 +82,8 @@ app.post('/signup', (req, res) => {
 
     User.create(temp)
     .then(success => {
-        res.send(success)
+        // res.send(success)
+        res.redirect('/signin')
     })
     .catch(err => {
         res.render('user/signup.ejs', {err: err})
@@ -86,7 +91,11 @@ app.post('/signup', (req, res) => {
     }
 })
 
-// app.use("/user", require('./routes/routeUser'))
+app.get('/profile', checkSession, (req, res) => {
+    res.render('user/profile.ejs')
+})
+
+
 
 app.listen(port, () => 
 console.log(`Reaction Game listening on port ${port}!`))
